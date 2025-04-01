@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UserService\**" />
+    <EmbeddedResource Remove="UserService\**" />
+    <None Remove="UserService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PRN222.Assignment.FUHotelBookingSystem.Repository\PRN222.Assignment.FUHotelBookingSystem.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+  </ItemGroup>
+
+</Project>

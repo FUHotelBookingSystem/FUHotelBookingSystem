@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN222.Assignment.FUHotelBookingSystem.RazorPages", "PRN222.Assignment.FUHotelBookingSystem.RazorPages\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj", "{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN222.Assignment.FUHotelBookingSystem.Service", "PRN222.Assignment.FUHotelBookingSystem.Service\PRN222.Assignment.FUHotelBookingSystem.Service.csproj", "{43C86E0D-2236-4CF3-89E8-25928DB61165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN222.Assignment.FUHotelBookingSystem.Repository", "PRN222.Assignment.FUHotelBookingSystem.Repository\PRN222.Assignment.FUHotelBookingSystem.Repository.csproj", "{F1ECF26F-61B0-4524-AC2F-962F01829912}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C86E0D-2236-4CF3-89E8-25928DB61165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C86E0D-2236-4CF3-89E8-25928DB61165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C86E0D-2236-4CF3-89E8-25928DB61165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C86E0D-2236-4CF3-89E8-25928DB61165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C80960CE-34D4-4661-825E-CAC33D13A590}
+	EndGlobalSection
+EndGlobal

@@ -34,6 +34,7 @@ builder.Services.AddScoped<IUSerCreateService, USerCreateService>();
 // Cấu hình Session
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddDistributedMemoryCache();
 
 
 // Cấu hình Authentication với JWT
@@ -84,7 +85,7 @@ app.Use(async (context, next) =>
 {
     if (context.Request.Path == "/")
     {
-        context.Response.Redirect("/");
+        context.Response.Redirect("/HomePage/Index");
         return;
     }
     await next();

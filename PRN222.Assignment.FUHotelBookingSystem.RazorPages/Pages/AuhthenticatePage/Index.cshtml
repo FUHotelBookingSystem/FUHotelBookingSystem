@@ -1,0 +1,50 @@
+﻿@page
+@model PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.AuhthenticatePage.IndexModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Welcome to FU Hotel</h2>
+                    <h5 class="text-center text-muted">Login to your account</h5>
+                    <hr />
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label asp-for="Password" class="control-label">Password</label>
+                            <input asp-for="Password" class="form-control" type="password" placeholder="Enter your password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-check mt-3">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <input type="submit" value="Login" class="btn btn-primary btn-lg w-100" />
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        Forgot password?| <a asp-page="Create">Create an account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

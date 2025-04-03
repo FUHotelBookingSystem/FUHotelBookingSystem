@@ -12,3 +12,4 @@ E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Ass
 E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.Repository\obj\Debug\net8.0\PRN222.Assignment.FUHotelBookingSystem.Repository.pdb
 E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.Repository\obj\Debug\net8.0\PRN222.Assignment.FUHotelBookingSystem.Repository.genruntimeconfig.cache
 E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.Repository\obj\Debug\net8.0\ref\PRN222.Assignment.FUHotelBookingSystem.Repository.dll
+E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.Repository\obj\Debug\net8.0\PRN222.Assignment.FUHotelBookingSystem.Repository.sourcelink.json

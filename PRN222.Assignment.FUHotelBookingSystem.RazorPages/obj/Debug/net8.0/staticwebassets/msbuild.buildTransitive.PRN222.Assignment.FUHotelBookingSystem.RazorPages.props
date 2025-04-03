@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\PRN222.Assignment.FUHotelBookingSystem.RazorPages.props" />
+</Project>

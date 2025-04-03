@@ -1,0 +1,127 @@
+﻿@page
+@model PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.HomePage.IndexModel
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Danh sách khách sạn";
+    Layout = "~/Pages/Shared/_Layout.cshtml"; // Ensure you're using the new layout
+    var token = HttpContextAccessor.HttpContext?.Session.GetString("Token");
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary fw-bold mb-4">Danh sách khách sạn</h2>
+
+    <!-- Search Bar -->
+    <div class="mb-3 d-flex justify-content-center">
+        <input type="text" id="searchBox" class="form-control w-50" placeholder="🔍 Tìm kiếm khách sạn..." value="@Model.SearchTerm">
+    </div>
+
+
+    <!-- Hotel List -->
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="hotelCards">
+        @foreach (var item in Model.Hotel)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@item.image" alt="Ảnh khách sạn" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <p class="text-muted">@Html.DisplayFor(modelItem => item.Location)</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="btn btn-success btn-sm" href="javascript:void(0);" onclick="checkLoginStatus('@item.Id')">
+                            <i class="bi bi-calendar-check"></i> Booking
+                        </a>
+
+                        <!-- Modal for login prompt -->
+                        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content shadow-lg border-0 rounded-3" style="background: linear-gradient(135deg, #f2f2f2, #dcdcdc);">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="loginModalLabel"><i class="bi bi-door-open"></i> Access Required</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p class="fs-5">You are not logged in. Please log in or register to complete your booking and start your journey.</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <a class="btn btn-primary btn-lg px-4" href="/AuhthenticatePage/Index"><i class="bi bi-box-arrow-in-right"></i> Log in to Book</a>
+                                        <a class="btn btn-outline-secondary btn-lg px-4" href="/AuhthenticatePage/Create"><i class="bi bi-pencil-square"></i> Start Your Journey</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <a class="btn btn-info btn-sm text-white" asp-page="./Details" asp-route-id="@item.Id">
+                            <i class="bi bi-eye"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Hotel pagination">
+        <ul class="pagination justify-content-center">
+            @if (Model.PageNumber > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-page="./Index" asp-route-PageNumber="@(Model.PageNumber - 1)" asp-route-SearchTerm="@Model.SearchTerm">
+                        <i class="bi bi-arrow-left"></i> Previous
+                    </a>
+                </li>
+            }
+
+            <li class="page-item disabled">
+                <span class="page-link bg-light text-dark">Page @Model.PageNumber of @Model.TotalPages</span>
+            </li>
+
+            @if (Model.PageNumber < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-page="./Index" asp-route-PageNumber="@(Model.PageNumber + 1)" asp-route-SearchTerm="@Model.SearchTerm">
+                        Next <i class="bi bi-arrow-right"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+<script>
+    document.getElementById("searchBox").addEventListener("input", function () {
+        let filter = this.value.toLowerCase();
+        let cards = document.querySelectorAll("#hotelCards .col");
+
+        cards.forEach(card => {
+            let name = card.querySelector(".card-title").innerText.toLowerCase();
+            let location = card.querySelector(".card-text").innerText.toLowerCase();
+            card.style.display = (name.includes(filter) || location.includes(filter)) ? "" : "none";
+        });
+
+        // Update the URL with the new search term for better UX (for sharing/bookmarking)
+        let newUrl = window.location.pathname + "?searchTerm=" + encodeURIComponent(filter) + "&pageNumber=1";
+        history.pushState(null, "", newUrl);
+    });
+</script>
+
+<script>
+        function checkLoginStatus(hotelId) {
+        // Check if the token exists in the session (using a simple check for token in session)
+        var token = '@HttpContextAccessor.HttpContext.Session.GetString("Token")';
+
+        if (token) {
+            // If logged in, redirect to the booking page with the roomId
+            window.location.href = `/BookingPage/Create?id=${hotelId}`;
+        } else {
+            // If not logged in, show the login modal
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        }
+    }
+
+</script>

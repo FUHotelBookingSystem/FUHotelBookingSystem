@@ -12,7 +12,7 @@ public partial class Hotel
     public string Location { get; set; } = null!;
 
     public string? Description { get; set; }
-
+    public string? image { get; set; }
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<Room> Rooms { get; set; } = new List<Room>();

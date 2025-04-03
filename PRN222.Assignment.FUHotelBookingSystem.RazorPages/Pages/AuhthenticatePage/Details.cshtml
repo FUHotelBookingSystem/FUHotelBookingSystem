@@ -1,0 +1,92 @@
+﻿@page
+@model PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.AuhthenticatePage.DetailsModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<style>
+    body {
+        background: url('https://source.unsplash.com/1600x900/?hotel,luxury') no-repeat center center/cover;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .card-custom {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .card-custom:hover {
+            transform: scale(1.02);
+        }
+
+    .btn-custom {
+        background: linear-gradient(135deg, #ff8c00, #ff3d00);
+        color: white;
+        border: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-custom:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+    .user-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .badge-role {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+</style>
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card card-custom p-4" style="width: 50%;">
+        <div class="text-center">
+            <h2 class="text-primary fw-bold">User Profile</h2>
+            <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="User Avatar" class="user-avatar mt-3">
+        </div>
+
+        <hr class="my-4">
+
+        <dl class="row">
+            <dt class="col-sm-4"><i class="fas fa-user"></i> Full Name</dt>
+            <dd class="col-sm-8 fw-bold">@Model.User.FullName</dd>
+
+            <dt class="col-sm-4"><i class="fas fa-envelope"></i> Email</dt>
+            <dd class="col-sm-8">@Model.User.Email</dd>
+
+            <dt class="col-sm-4"><i class="fas fa-phone"></i> Phone</dt>
+            <dd class="col-sm-8">@Model.User.Phone</dd>
+
+            <dt class="col-sm-4"><i class="fas fa-user-tag"></i> Role</dt>
+            <dd class="col-sm-8">
+                <span class="badge badge-role bg-success">@Model.User.Role</span>
+            </dd>
+
+            <dt class="col-sm-4"><i class="fas fa-calendar-alt"></i> Created At</dt>
+            <dd class="col-sm-8">@Model.User.CreatedAt.ToString()</dd>
+        </dl>
+
+        <div class="text-center mt-4">
+            <a asp-page="./Edit" asp-route-id="@Model.User.Id" class="btn btn-custom me-2">
+                <i class="fas fa-edit"></i> Edit
+            </a>
+            <a asp-page="/HomePage/Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Thêm FontAwesome để có icon đẹp -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

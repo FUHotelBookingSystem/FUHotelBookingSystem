@@ -1,51 +1,198 @@
-﻿<!DOCTYPE html>
+﻿@using PRN222.Assignment.FUHotelBookingSystem.Repository.Model
+@using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService
+@inject ICookieService _cookie
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    var token = HttpContextAccessor.HttpContext?.Session.GetString("Token");
+
+    User? user = null;
+    if (!string.IsNullOrEmpty(token))
+    {
+        try
+        {
+            user = _cookie.GetCookie<User>(token);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Lỗi lấy cookie: {ex.Message}");
+        }
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PRN222.Assignment.FUHotelBookingSystem.RazorPages</title>
+    <title>@ViewData["Title"] - Hotel Booking System</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+   
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PRN222.Assignment.FUHotelBookingSystem.RazorPages.styles.css" asp-append-version="true" />
+    <style>
+        body {
+        font-family: 'Arial', sans-serif;
+        background: url('https://source.unsplash.com/1600x900/?hotel,resort') no-repeat center center/cover;
+        }
+
+        /* NAVBAR XÁM ĐỤC */
+        .navbar {
+        background: rgba(100, 100, 100, 0.8); /* Màu xám đục */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+        }
+
+        .navbar-brand img {
+        filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3));
+        }
+
+        .nav-link {
+        transition: all 0.3s ease-in-out;
+        color: white !important;
+        }
+
+        .nav-link:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+        }
+
+        /* BUTTON STYLES */
+        .btn-custom {
+        background: linear-gradient(135deg, #ff8c00, #ff3d00);
+        color: white;
+        border: none;
+        transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+        opacity: 0.8;
+        transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        .footer {
+        background: rgba(100, 100, 100, 0.8); /* Đồng bộ với navbar */
+        color: white;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        padding: 15px 0;
+        }
+    </style>
+
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">PRN222.Assignment.FUHotelBookingSystem.RazorPages</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Navbar Brand -->
+                <a class="navbar-brand text-white fw-bold" asp-area="" asp-page="/Index">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3378/3378752.png" alt="Hotel Booking" width="40" height="40" class="d-inline-block align-text-top">
+                    Hotel Booking System
+                </a>
+
+                <!-- Navbar Toggler (for mobile view) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+                <!-- Navbar Menu (space between logo and user section) -->
+                <div class="collapse navbar-collapse d-flex justify-content-between w-100" id="navbarNav">
+                    <!-- Left side (logo) stays on the left -->
+                    <div class="d-flex align-items-center">
+                        <!-- You can add other elements on the left side here if needed -->
+                    </div>
+
+                    <!-- Right side (user login/logout or registration buttons) -->
+                    <div class="d-flex align-items-center">
+                        @if (user != null)
+                        {
+                            <style>
+                                .dropdown-custom .btn-light {
+                                    background: linear-gradient(135deg, #ff8c00, #ff3d00);
+                                    color: white;
+                                    border: none;
+                                    font-weight: bold;
+                                    border-radius: 25px;
+                                    padding: 10px 20px;
+                                    transition: all 0.3s ease-in-out;
+                                }
+
+                                    .dropdown-custom .btn-light:hover {
+                                        opacity: 0.9;
+                                        transform: scale(1.05);
+                                    }
+
+                                .dropdown-custom .dropdown-menu {
+                                    border-radius: 15px;
+                                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+                                    background: rgba(255, 255, 255, 0.95);
+                                    overflow: hidden;
+                                }
+
+                                .dropdown-custom .dropdown-item {
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                    padding: 10px 20px;
+                                    transition: background 0.3s ease-in-out;
+                                }
+
+                                    .dropdown-custom .dropdown-item:hover {
+                                        background: linear-gradient(135deg, #ff8c00, #ff3d00);
+                                        color: white;
+                                    }
+
+                                    .dropdown-custom .dropdown-item i {
+                                        margin-right: 10px;
+                                    }
+                            </style>
+
+                            <div class="dropdown dropdown-custom">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i> Xin chào, @user.FullName
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-page="/AuhthenticatePage/Details" asp-route-id="@user.Id">
+                                            <i class="fas fa-info-circle"></i> Information
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-page="/BookingPage/Index">Đặt phòng của tôi</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-page="/AuhthenticatePage/Logout">
+                                            <i class="fas fa-sign-out-alt"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Thêm FontAwesome để có icon đẹp -->
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                        }
+                        else
+                        {
+                            <a class="btn btn-custom me-2" asp-page="/AuhthenticatePage/Index">Login</a>
+                            <a class="btn btn-light" asp-page="/AuhthenticatePage/Create">Logout</a>
+                        }
+                    </div>
                 </div>
             </div>
         </nav>
+
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="container mt-5 pt-5">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - PRN222.Assignment.FUHotelBookingSystem.RazorPages - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

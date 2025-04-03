@@ -25,6 +25,8 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
             try
             {
                 if (account == null) return false;
+                string hashedPassword = HashHelper.ComputeSha256Hash(account.PasswordHash);
+                account.PasswordHash = hashedPassword;
                 _unitOfWork.User.Add(account);
                 return true;
             }
@@ -40,7 +42,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
             {
                 var findAccount = _unitOfWork.User.GetbyId(idAccount);
                 if (findAccount == null) return false;
-
+                
                 _unitOfWork.User.Delete(findAccount);
                 return true;
             }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PRN222.Assignment.FUHotelBookingSystem.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf330db0506bdaab8ea579b5f11590538d541ac2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+640a8f5e1b5dec31ae5f7f58b4fc69e7fd19d351")]
 [assembly: System.Reflection.AssemblyProductAttribute("PRN222.Assignment.FUHotelBookingSystem.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PRN222.Assignment.FUHotelBookingSystem.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

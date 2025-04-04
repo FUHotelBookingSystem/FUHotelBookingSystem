@@ -25,6 +25,11 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices
             return _unitOfWork.Room.Find(m => m.HotelId.Equals(hotelId)).ToList();
         }
 
+        public IQueryable<Room> GetQueryable()
+        {
+            return _unitOfWork.Room.GetQueryable();
+        }
+
         public Room getRoomByID(int id)
         {
             return _unitOfWork.Room.GetbyId(id);
@@ -38,9 +43,32 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices
                 findRoom.Status = "Occupied";
                 _unitOfWork.Room.Update(findRoom);
                 return true;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
+            }
+        }
+
+        public void createRoom(Room room)
+        {
+            _unitOfWork.Room.Add(room);
+            _unitOfWork.Commit();
+        }
+
+        public void updateRoom(Room room)
+        {
+            _unitOfWork.Room.Update(room);
+            _unitOfWork.Commit();
+        }
+
+        public void deleteRoom(int id)
+        {
+            var room = _unitOfWork.Room.GetbyId(id);
+            if (room != null)
+            {
+                _unitOfWork.Room.Delete(room);
+                _unitOfWork.Commit();
             }
         }
     }

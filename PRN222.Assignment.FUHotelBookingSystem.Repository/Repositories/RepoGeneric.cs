@@ -52,6 +52,11 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Repository.Repositories
             return _dbSet.Find(id);
         }
 
+        public IQueryable<T> GetQueryable()
+        {
+            return _dbSet.AsQueryable();
+        }
+
         public void Update(T entity)
         {
             _dbSet.Update(entity);

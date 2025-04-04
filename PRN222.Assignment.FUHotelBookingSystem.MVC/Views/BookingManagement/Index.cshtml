@@ -3,6 +3,175 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h1>Quản lí đặt phòng</h1>
-<p>Welcome to the Booking Management section.</p>
+<div class="container mt-4">
+    <h2 class="mb-4">Bookings</h2>
 
+    <!-- Bộ lọc -->
+    <form method="get" asp-action="Index">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="search" placeholder="Search by name or email" value="@Context.Request.Query["search"]">
+            </div>
+
+            <div class="col-md-3">
+                <select class="form-select" name="hotelId">
+                    <option value="">Choose hotel</option>
+                    @foreach (var hotel in ViewBag.Hotels)
+                    {
+                        <option value="@hotel.Id" selected="@(hotel.Id.ToString() == Context.Request.Query["hotelId"] ? true : false)">@hotel.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" name="filterDate" value="@Context.Request.Query["filterDate"]">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Bảng hiển thị Booking -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Hotel</th>
+                    <th>Room No</th>
+                    <th>Date</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td>@booking.User.FullName</td>
+                        <td>@booking.User.Email</td>
+                        <td>@booking.Room.Hotel.Name</td>
+                        <td>@booking.Room.RoomNumber</td>
+                        <td>@booking.BookingDate.ToString("dd/MM/yyyy")</td>
+                        <td>@(booking.CheckinAt != null ? booking.CheckinAt.ToString("dd/MM/yyyy HH:mm") : "Not checked in")</td>
+                        <td>@(booking.CheckinOut != null ? booking.CheckinOut.ToString("dd/MM/yyyy HH:mm") : "Not checked out")</td>
+                        <td>@booking.Status</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" onclick="viewDetails(@booking.Id)">View Details</button>
+                            @if (booking.CheckinAt == null)
+                            {
+                                <form method="post" asp-action="CheckIn" style="display:inline;">
+                                    <input type="hidden" name="bookingId" value="@booking.Id" />
+                                    <button type="submit" class="btn btn-success btn-sm">Check-in</button>
+                                </form>
+                            }
+                            else if (booking.CheckinAt != null && booking.CheckinOut == null)
+                            {
+                                <form method="post" asp-action="CheckOut" style="display:inline;">
+                                    <input type="hidden" name="bookingId" value="@booking.Id" />
+                                    <button type="submit" class="btn btn-warning btn-sm">Check-out</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phân trang -->
+    @if (ViewBag.TotalPages > 1)
+    {
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="?page=@i&search=@Context.Request.Query["search"]&hotelId=@Context.Request.Query["hotelId"]&filterDate=@Context.Request.Query["filterDate"]">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
+    <!-- Modal for booking details -->
+    <div class="modal fade" id="bookingDetailsModal" tabindex="-1" aria-labelledby="bookingDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingDetailsModalLabel">Booking Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Booking Information</h5>
+                            <div id="bookingDetailsContent">
+                                <!-- Booking details will be loaded here dynamically -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Payment Information</h5>
+                            <div id="paymentDetailsContent">
+                                <!-- Payment details will be loaded here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function viewDetails(bookingId) {
+        fetch(`/BookingManagement/GetBookingDetails?bookingId=${bookingId}`)
+            .then(response => response.json())
+            .then(data => {
+                let bookingDate = new Date(data.bookingDate).toLocaleDateString('en-GB');
+                let checkinAt = data.checkinAt ? new Date(data.checkinAt).toLocaleString('en-GB') : "Not checked in";
+                let checkoutAt = data.checkinOut ? new Date(data.checkinOut).toLocaleString('en-GB') : "Not checked out";
+
+                let bookingDetailsContent = `
+                    <p><strong>Booking ID:</strong> ${data.id}</p>
+                    <p><strong>Full Name:</strong> ${data.fullName}</p>
+                    <p><strong>Email:</strong> ${data.email}</p>
+                    <p><strong>Phone:</strong> ${data.phone}</p>
+                    <p><strong>Hotel:</strong> ${data.name}</p>
+                    <p><strong>Location:</strong> ${data.location}</p>
+                    <p><strong>Room Number:</strong> ${data.roomNumber}</p>
+                    <p><strong>Booking Date:</strong> ${bookingDate}</p>
+                    <p><strong>Check-in:</strong> ${checkinAt}</p>
+                    <p><strong>Check-out:</strong> ${checkoutAt}</p>
+                    <p><strong>Status:</strong> ${data.status}</p>
+                `;
+                document.getElementById('bookingDetailsContent').innerHTML = bookingDetailsContent;
+
+                let paymentDetailsContent = data.payments.length > 0 ? `
+                    <ul>
+                        ${data.payments.map(payment => `
+                            <li>
+                                <p><strong>Amount:</strong> ${payment.amount}</p>
+                                <p><strong>Payment Method:</strong> ${payment.paymentMethod}</p>
+                                <p><strong>Status:</strong> ${payment.status}</p>
+                                <p><strong>Created At:</strong> ${new Date(payment.createdAt).toLocaleString('en-GB')}</p>
+                            </li>
+                        `).join('')}
+                    </ul>
+                ` : '<p>Not yet</p>';
+                document.getElementById('paymentDetailsContent').innerHTML = paymentDetailsContent;
+
+                var bookingDetailsModal = new bootstrap.Modal(document.getElementById('bookingDetailsModal'));
+                bookingDetailsModal.show();
+            });
+    }
+</script>

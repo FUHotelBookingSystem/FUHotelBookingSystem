@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.UOW;
 
@@ -26,14 +27,23 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
         {
             try
             {
-                
+
 
                 return _unitOfWork.Booking.Add1(booking);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
+        }
+
+        public List<Booking> GetAllBookings()
+        {
+            return _unitOfWork.Booking.GetQueryable()
+                .Include(s => s.User)
+                .Include(s => s.Room)
+                .ThenInclude(r => r.Hotel)
+                .ToList();
         }
 
         public Booking getBookingByid(int id)
@@ -44,6 +54,11 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
         public List<Booking> getListBookingByUserId(int userId)
         {
             return _unitOfWork.Booking.Find(m => m.UserId.Equals(userId)).ToList();
+        }
+
+        public IQueryable<Booking> GetQueryable()
+        {
+            return _unitOfWork.Booking.GetQueryable();
         }
 
         public bool UpdateBooking(Booking booking)
@@ -67,7 +82,8 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
                 result.Status = "Confirmed";
                 _unitOfWork.Booking.Update(result);
                 return true;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return false;
             }

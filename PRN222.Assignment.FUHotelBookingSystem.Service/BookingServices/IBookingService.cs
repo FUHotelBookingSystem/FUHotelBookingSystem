@@ -10,10 +10,12 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
     public interface IBookingService
     {
         public List<Booking> getListBookingByUserId(int userId);
+        public List<Booking> GetAllBookings();
         public Booking createBooking(Booking booking);
         public bool UpdateBooking(Booking booking);
         public Booking getBookingByid(int id);
         public int CountBooking();
         public bool UpdateStatustBooking(int id);
+        public IQueryable<Booking> GetQueryable();
     }
 }

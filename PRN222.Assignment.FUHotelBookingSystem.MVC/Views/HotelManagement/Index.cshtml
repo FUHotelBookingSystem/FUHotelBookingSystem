@@ -3,6 +3,287 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h1>Quản lí khách sạn</h1>
-<p>Welcome to the Hotel Management section.</p>
+<div class="container mt-4">
+    <h2 class="mb-4">Hotel Management</h2>
 
+    <!-- Search Bar -->
+    <form method="get" asp-action="Index">
+        <div class="row mb-3">
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="search" placeholder="Search by name or location" value="@Context.Request.Query["search"]">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Add Hotel Button -->
+    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#hotelModal" onclick="clearHotelForm()">Add Hotel</button>
+
+    <!-- Hotel Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hotel in Model)
+                {
+                    <tr>
+                        <td>@hotel.Name</td>
+                        <td>@hotel.Location</td>
+                        <td>@hotel.Description</td>
+                        <td><img src="@hotel.image" alt="Hotel Image" width="100"></td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" onclick="viewHotelDetails(@hotel.Id)">View Details</button>
+                            <form method="post" asp-action="DeleteHotel" style="display:inline;">
+                                <input type="hidden" name="hotelId" value="@hotel.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    @if (ViewBag.TotalPages > 1)
+    {
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="?page=@i&search=@Context.Request.Query["search"]">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
+    <!-- Hotel Modal -->
+    <div class="modal fade" id="hotelModal" tabindex="-1" aria-labelledby="hotelModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hotelModalLabel">Hotel Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="hotelForm" method="post">
+                        <input type="hidden" id="hotelId" name="Id" />
+                        <div class="mb-3">
+                            <label for="hotelName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="hotelName" name="Name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="hotelLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="hotelLocation" name="Location" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="hotelDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="hotelDescription" name="Description" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hotelImage" class="form-label">Image URL</label>
+                            <input type="text" class="form-control" id="hotelImage" name="image" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                    <hr />
+                    <h5>Rooms</h5>
+                    <button type="button" class="btn btn-success mb-3" id="addRoomButton" onclick="addRoom()" style="display:none;">Add Room</button>
+                    <div id="roomDetailsContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Modal -->
+    <div class="modal fade" id="roomModal" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="roomModalLabel">Room Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="roomForm" method="post" onsubmit="submitRoomForm(event)">
+                        <input type="hidden" id="roomId" name="Id" />
+                        <input type="hidden" id="roomHotelId" name="HotelId" />
+                        <div class="mb-3">
+                            <label for="roomNumber" class="form-label">Room Number</label>
+                            <input type="text" class="form-control" id="roomNumber" name="RoomNumber" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="roomType" class="form-label">Type</label>
+                            <select class="form-select" id="roomType" name="Type" required>
+                                <option value="Single">Single</option>
+                                <option value="Couple">Couple</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="roomPrice" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="roomPrice" name="Price" required min="1" />
+                            <div class="invalid-feedback">Price must be greater than 0.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="roomStatus" class="form-label">Status</label>
+                            <select class="form-select" id="roomStatus" name="Status" required>
+                                <option value="Available">Available</option>
+                                <option value="Unavailable">Unavailable</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="showHotelModal()">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function clearHotelForm() {
+        document.getElementById('hotelForm').reset();
+        document.getElementById('hotelForm').action = '/HotelManagement/CreateHotel';
+        document.getElementById('addRoomButton').style.display = 'none'; // Hide the Add Room button
+    }
+
+    function viewHotelDetails(hotelId) {
+        fetch(`/HotelManagement/GetHotelDetails?hotelId=${hotelId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('hotelId').value = data.id;
+                document.getElementById('hotelName').value = data.name;
+                document.getElementById('hotelLocation').value = data.location;
+                document.getElementById('hotelDescription').value = data.description;
+                document.getElementById('hotelImage').value = data.image;
+                document.getElementById('hotelForm').action = '/HotelManagement/UpdateHotel';
+                var hotelModal = new bootstrap.Modal(document.getElementById('hotelModal'));
+                hotelModal.show();
+
+                // Populate rooms
+                let roomTable = '<table class="table table-bordered table-striped"><thead class="table-dark"><tr><th>Room Number</th><th>Type</th><th>Price</th><th>Status</th><th>Action</th></tr></thead><tbody>';
+                data.rooms.forEach(room => {
+                    roomTable += `<tr>
+                        <td>${room.roomNumber}</td>
+                        <td>${room.type}</td>
+                        <td>${room.price}</td>
+                        <td>${room.status}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm" onclick="editRoom(${room.id})">Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteRoom(${room.id})">Delete</button>
+                        </td>
+                    </tr>`;
+                });
+                roomTable += '</tbody></table>';
+                document.getElementById('roomDetailsContent').innerHTML = roomTable;
+
+                // Show the Add Room button
+                document.getElementById('addRoomButton').style.display = 'block';
+            });
+    }
+
+    function editHotel(hotelId) {
+        fetch(`/HotelManagement/GetHotelDetails?hotelId=${hotelId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('hotelId').value = data.id;
+                document.getElementById('hotelName').value = data.name;
+                document.getElementById('hotelLocation').value = data.location;
+                document.getElementById('hotelDescription').value = data.description;
+                document.getElementById('hotelImage').value = data.image;
+                document.getElementById('hotelForm').action = '/HotelManagement/UpdateHotel';
+                var hotelModal = new bootstrap.Modal(document.getElementById('hotelModal'));
+                hotelModal.show();
+
+                // Show the Add Room button
+                document.getElementById('addRoomButton').style.display = 'block';
+            });
+    }
+
+    function addRoom() {
+        document.getElementById('roomForm').reset();
+        document.getElementById('roomHotelId').value = document.getElementById('hotelId').value; // Set hotelId for the room
+        document.getElementById('roomForm').action = '/HotelManagement/CreateRoom';
+        var roomModal = new bootstrap.Modal(document.getElementById('roomModal'));
+        roomModal.show();
+    }
+
+    function editRoom(roomId) {
+        fetch(`/HotelManagement/GetRoomDetails?roomId=${roomId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('roomId').value = data.id;
+                document.getElementById('roomHotelId').value = data.hotelId;
+                document.getElementById('roomNumber').value = data.roomNumber;
+                document.getElementById('roomType').value = data.type;
+                document.getElementById('roomPrice').value = data.price;
+                document.getElementById('roomStatus').value = data.status;
+                document.getElementById('roomForm').action = '/HotelManagement/UpdateRoom';
+                var roomModal = new bootstrap.Modal(document.getElementById('roomModal'));
+                roomModal.show();
+            });
+    }
+
+    function deleteRoom(roomId) {
+        if (confirm("Are you sure you want to delete this room?")) {
+            fetch(`/HotelManagement/DeleteRoom?roomId=${roomId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    viewHotelDetails(document.getElementById('hotelId').value);
+                } else {
+                    alert("Failed to delete room.");
+                }
+            });
+        }
+    }
+
+    function showHotelModal() {
+        var hotelModal = new bootstrap.Modal(document.getElementById('hotelModal'));
+        hotelModal.show();
+    }
+
+    function submitRoomForm(event) {
+        event.preventDefault();
+        var form = document.getElementById('roomForm');
+        var formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                var roomModal = bootstrap.Modal.getInstance(document.getElementById('roomModal'));
+                roomModal.hide();
+                viewHotelDetails(document.getElementById('hotelId').value);
+            } else {
+                alert("Failed to save room.");
+            }
+        });
+    }
+</script>

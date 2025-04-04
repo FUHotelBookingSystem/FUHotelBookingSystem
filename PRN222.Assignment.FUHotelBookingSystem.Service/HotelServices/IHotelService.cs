@@ -11,5 +11,10 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices
     {
         public List<Hotel> getAllHotel();
         public Hotel getHotelById(int id);
+
+        public IQueryable<Hotel> GetQueryable();
+        void createHotel(Hotel hotel);
+        void updateHotel(Hotel hotel);
+        void deleteHotel(int id);
     }
 }

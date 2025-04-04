@@ -14,5 +14,11 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices
         public List<Room> getAllRoom();
         public List<Room> getAllRoomByHotelId(int hotelId);
         public bool SetRoomBlock(int id);
+
+        public IQueryable<Room> GetQueryable();
+
+        void createRoom(Room room);
+        void updateRoom(Room room);
+        void deleteRoom(int id);
     }
 }

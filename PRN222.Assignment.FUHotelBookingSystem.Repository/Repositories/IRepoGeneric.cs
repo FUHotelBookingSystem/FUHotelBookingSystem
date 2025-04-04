@@ -16,5 +16,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Repository.Repositories
         void Update(T entity);
         void Delete(T entity);
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+
+        IQueryable<T> GetQueryable();
     }
 }

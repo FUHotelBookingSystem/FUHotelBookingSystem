@@ -13,11 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PRN222.Assignment.FUHotelBookingSystem.Repository\PRN222.Assignment.FUHotelBookingSystem.Repository.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <ProjectReference Include="..\PRN222.Assignment.FUHotelBookingSystem.Repository\PRN222.Assignment.FUHotelBookingSystem.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PRN222.Assignment.FUHotelBookingSystem.RazorPages")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+640a8f5e1b5dec31ae5f7f58b4fc69e7fd19d351")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4ec4aeee87247f4e5cbdf13ebd53c0a1ef4d7de")]
 [assembly: System.Reflection.AssemblyProductAttribute("PRN222.Assignment.FUHotelBookingSystem.RazorPages")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PRN222.Assignment.FUHotelBookingSystem.RazorPages")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

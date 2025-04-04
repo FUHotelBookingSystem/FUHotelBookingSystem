@@ -1,61 +1,83 @@
 ﻿@page
 @model PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage.DetailsModel
 
-@{
-    ViewData["Title"] = "Details";
-}
+<h2 class="mb-4 text-center display-5 fw-bold text-primary">🛏️ Booking Details</h2>
 
-<h1>Details</h1>
+<form method="post">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h5 class="text-secondary"><i class="bi bi-person-fill"></i> Guest Information</h5>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">Full Name</label>
+                            <input class="form-control" value="@Model.user.FullName" readonly />
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Phone Number</label>
+                            <input class="form-control" value="@Model.user.Phone" readonly />
+                        </div>
+                    </div>
 
-<div>
-    <h4>Booking</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.BookingDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.BookingDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.CheckinAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.CheckinAt)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.CheckinOut)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.CheckinOut)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.Status)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.Status)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.CreatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.CreatedAt)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.Room)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.Room.RoomNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.User)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.User.Email)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Booking.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+                    <h5 class="mt-4 mb-3 text-secondary"><i class="bi bi-building"></i> Hotel Information</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Hotel Name</label>
+                        <input class="form-control" value="@Model.Hotel.Name" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Location</label>
+                        <input class="form-control" value="@Model.Hotel.Location" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="2" readonly>@Model.Hotel.Description</textarea>
+                    </div>
+
+                    <h5 class="mt-4 mb-3 text-secondary"><i class="bi bi-calendar-check"></i> Booking Details</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Room Number</label>
+                        <input class="form-control" value="@Model.room.RoomNumber" readonly />
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Booking Date</label>
+                            <input class="form-control" value="@Model.Booking.BookingDate.ToString("yyyy-MM-dd")" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Check-in</label>
+                            <input class="form-control" value="@Model.Booking.CheckinAt.ToString()" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Check-out</label>
+                            <input class="form-control" value="@Model.Booking.CheckinOut.ToString()" readonly />
+                        </div>
+                    </div>
+
+                    <!-- Added Price and Total Price Section -->
+                    <h5 class="mt-4 mb-3 text-secondary"><i class="bi bi-currency-dollar"></i> Payment Details</h5>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Price per Night</label>
+                            <input class="form-control" value="@Model.room.Price" readonly />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Total Price</label>
+                            <input class="form-control" value="@Model.totalPrice" readonly />
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-5">
+                        <a asp-page="/BookingPage/Create" asp-route-id="@Model.Hotel.Id" class="btn btn-outline-secondary">
+                            ← Back to Home
+                        </a>
+                        <!-- Payment Button -->
+                        <button type="submit" class="btn btn-success px-4">
+                            💳 Pay Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

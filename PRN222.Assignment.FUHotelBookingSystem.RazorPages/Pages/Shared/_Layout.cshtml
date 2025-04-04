@@ -5,7 +5,7 @@
 
 
 @{
-    var token = HttpContextAccessor.HttpContext?.Session.GetString("Token");
+    var token = _cookie.GetCookie<String>("ReLogin");
 
     User? user = null;
     if (!string.IsNullOrEmpty(token))

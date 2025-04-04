@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices;
+using PRN222.Assignment.FUHotelBookingSystem.Service.UserServices;
 
 namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
 {
@@ -17,36 +20,58 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
         private readonly IRoomService _roomService;
         private readonly IHotelService _hotelService;
         private readonly ICookieService _cookieService;
+        private readonly IUSerCreateService _user;
 
-        public CreateModel(IRoomService roomService,IHotelService hotelService,ICookieService cookieService)
+        public CreateModel(IRoomService roomService,IHotelService hotelService,ICookieService cookieService,IUSerCreateService uSerCreateService)
         {
             _hotelService = hotelService;
             _roomService = roomService;
             _cookieService = cookieService;
-        }
-
-        public IActionResult OnGet(int? id)
-        {
-            var token = HttpContext.Session.GetString("Token");
-            User user = _cookieService.GetCookie<User>(token);
-            var hotel = _hotelService.getHotelById((int)id);
-            var room = _roomService.getAllRoomByHotelId((int)id);
-            ViewData["RoomId"] = new SelectList(room, "Id", "RoomNumber");
-            //ViewData["UserId"] = new SelectList((System.Collections.IEnumerable)user, "Id", "Email");
-            return Page();
+            _user = uSerCreateService;
         }
 
         [BindProperty]
         public Booking Booking { get; set; } = default!;
+        [BindProperty]
+        public Hotel hotel { get; set; } = default!;
+        [BindProperty]
+        public User user { get; set; } = default!;
+
+        public IActionResult OnGet(int? id)
+        {
+            var token = HttpContext.Session.GetString("Token");
+            user = _cookieService.GetCookie<User>(token);
+            hotel = _hotelService.getHotelById((int)id);
+            var room = _roomService.getAllRoomByHotelId((int)id);
+            Booking = new Booking();
+            
+            Booking.UserId = user.Id;
+            Booking.BookingDate = DateOnly.FromDateTime(DateTime.Now);
+
+            var bookedRoomIds = room.Where(m => m.Status.Equals("Occupied"))
+                        .Select(m => m.Id) 
+                        .ToList();
+
+            ViewData["RoomId"] = room.Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = $"{r.RoomNumber} - Price: ${r.Price} {(bookedRoomIds.Contains(r.Id) ? " - 🚫 Booked" : " - ✅ Available")}",
+                Disabled = bookedRoomIds.Contains(r.Id)
+            }).ToList();
+
+            return Page();
+
+        }
+
+
 
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            return RedirectToPage("./Index");
+            
+            TempData["Hotel"] = JsonConvert.SerializeObject(hotel);
+            TempData["Booking"] = JsonConvert.SerializeObject(Booking);
+            return RedirectToPage("./Details");
         }
     }
 }

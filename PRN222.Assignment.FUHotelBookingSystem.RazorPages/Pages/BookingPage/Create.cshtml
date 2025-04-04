@@ -2,51 +2,148 @@
 @model PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Book a Room";
 }
 
-<h1>Create</h1>
+<h2 class="mb-4 text-center display-5 fw-bold text-primary">🛏️ Book a Room</h2>
 
-<h4>Booking</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Booking.UserId" class="control-label"></label>
-                <select asp-for="Booking.UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-5">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                    <!-- Guest Info -->
+                    <h5 class="mb-3 text-secondary"><i class="bi bi-person-fill"></i> Guest Information</h5>
+                    <div class="row mb-3">
+                        <div class="col" hidden="hidden">
+                            <label asp-for="Booking.UserId" class="form-label">User Id</label>
+                            <input asp-for="Booking.UserId" class="form-control" readonly />
+                        </div>
+                        <div class="col">
+                            <label asp-for="user.FullName" class="form-label">Full Name</label>
+                            <input asp-for="user.FullName" class="form-control" readonly />
+                        </div>
+                        <div class="col">
+                            <label asp-for="user.Phone" class="form-label">Phone Number</label>
+                            <input asp-for="user.Phone" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <!-- Hotel Info -->
+                    <div class="col" hidden="hidden">
+                        <label asp-for="hotel.Id" class="form-label">Hotel Id</label>
+                        <input asp-for="hotel.Id" class="form-control" readonly />
+                    </div>
+                    <h5 class="mt-4 mb-3 text-secondary"><i class="bi bi-building"></i> Hotel Information</h5>
+                    <div class="mb-3">
+                        <label asp-for="hotel.Name" class="form-label">Hotel Name</label>
+                        <input asp-for="hotel.Name" class="form-control" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="hotel.Location" class="form-label">Location</label>
+                        <input asp-for="hotel.Location" class="form-control" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="hotel.Description" class="form-label">Description</label>
+                        <textarea asp-for="hotel.Description" class="form-control" rows="2" readonly></textarea>
+                    </div>
+
+                    <!-- Booking Info -->
+                    <h5 class="mt-4 mb-3 text-secondary"><i class="bi bi-calendar-check"></i> Booking Details</h5>
+                    <div class="mb-3">
+                        <label asp-for="Booking.RoomId" class="form-label">Select Room</label>
+                        <select asp-for="Booking.RoomId" class="form-select" asp-items="ViewBag.RoomId"></select>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label asp-for="Booking.BookingDate" class="form-label">Booking Date</label>
+                            <input asp-for="Booking.BookingDate" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Booking.CheckinAt" class="form-label">Check-in</label>
+                            <input asp-for="Booking.CheckinAt" class="form-control" type="date"
+                                   min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="updateCheckOutDate()" />
+                            @if (ModelState.ContainsKey("Booking.CheckinAt"))
+                            {
+                                <span class="text-danger">@ModelState["Booking.CheckinAt"].Errors.FirstOrDefault()?.ErrorMessage</span>
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Booking.CheckinOut" class="form-label">Check-out</label>
+                            <input asp-for="Booking.CheckinOut" class="form-control" type="date"
+                                   min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="validateCheckOutDate()" />
+                            @if (ModelState.ContainsKey("Booking.CheckinOut"))
+                            {
+                                <span class="text-danger">@ModelState["Booking.CheckinOut"].Errors.FirstOrDefault()?.ErrorMessage</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-5">
+                        <a asp-page="/HomePage/Index" class="btn btn-outline-secondary">
+                            ← Back to List
+                        </a>
+                        <button type="submit" class="btn btn-success px-4">
+                            ✅ Confirm Booking
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Booking.RoomId" class="control-label"></label>
-                <select asp-for="Booking.RoomId" class ="form-control" asp-items="ViewBag.RoomId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.BookingDate" class="control-label"></label>
-                <input asp-for="Booking.BookingDate" class="form-control" />
-                <span asp-validation-for="Booking.BookingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.CheckinAt" class="control-label"></label>
-                <input asp-for="Booking.CheckinAt" class="form-control" />
-                <span asp-validation-for="Booking.CheckinAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.CheckinOut" class="control-label"></label>
-                <input asp-for="Booking.CheckinOut" class="form-control" />
-                <span asp-validation-for="Booking.CheckinOut" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="/HomePage/Index">Back to List</a>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<div class="modal fade" id="checkOutErrorModal" tabindex="-1" aria-labelledby="checkOutErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkOutErrorModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Ngày Check-out phải lớn hơn ngày Check-in.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<script>
+    function updateCheckOutDate() {
+        var checkinDate = document.getElementById("Booking_CheckinAt").value;
+        if (checkinDate) {
+            var checkin = new Date(checkinDate);
+            checkin.setDate(checkin.getDate() + 1); 
+            var checkOutDate = checkin.toISOString().split('T')[0];
+            document.getElementById("Booking_CheckinOut").value = checkOutDate;
+        }
+    }
+
+        function validateCheckOutDate() {
+        var checkinDate = new Date(document.getElementById("Booking_CheckinAt").value);
+        var checkoutDate = new Date(document.getElementById("Booking_CheckinOut").value);
+
+        if (checkoutDate <= checkinDate) {
+            var modal = new bootstrap.Modal(document.getElementById('checkOutErrorModal'));
+            modal.show();
+
+            checkinDate.setDate(checkinDate.getDate() + 1);
+            document.getElementById("Booking_CheckinOut").value = checkinDate.toISOString().split('T')[0]; 
+
+            document.getElementById("Booking_CheckinOut").setCustomValidity("Ngày Check-out phải lớn hơn ngày Check-in.");
+        } else {
+            document.getElementById("Booking_CheckinOut").setCustomValidity("");
+        }
+    }
+
+</script>

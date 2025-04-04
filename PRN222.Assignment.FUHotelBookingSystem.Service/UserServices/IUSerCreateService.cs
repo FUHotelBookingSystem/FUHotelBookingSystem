@@ -12,6 +12,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
         bool createAccount(User account);
         bool updateAccount(User account);
         User getAccountById(int id);
+        User findUserByEmail(string email);
         bool deleteAccount(int idAccount);
         String login(string email, string passworld);
     }

@@ -52,6 +52,12 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
             }
         }
 
+        public User findUserByEmail(string email)
+        {
+            var result = _unitOfWork.User.Find(m => m.Email.Equals(email)).FirstOrDefault();
+            return result;
+        }
+
         public User getAccountById(int id)
         {
             var result = _unitOfWork.User.GetbyId(id);
@@ -67,13 +73,11 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
             var result = _unitOfWork.User.Find(m => m.Email.Equals(email) && m.PasswordHash.Equals(hashedPassword)).FirstOrDefault();
             if (result != null)
             {
-                if (result != null)
-                {
-                    String token = Guid.NewGuid().ToString();
-                    Debug.WriteLine(token);
-                    _cookie.SetCookie(token, result, 1);
-                    return token;
-                }
+                String token = Guid.NewGuid().ToString();
+                Debug.WriteLine(token);
+                _cookie.SetCookie(token, result, 1);
+                _cookie.SetCookie("ReLogin", token, 1);
+                return token;
             }
 
             return null;

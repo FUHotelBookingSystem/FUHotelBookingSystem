@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null; // Disable layout
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hotel Booking System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://source.unsplash.com/1600x900/?hotel,luxury') no-repeat center center/cover;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-container h2 {
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .login-container .form-group {
+                margin-bottom: 15px;
+            }
+
+            .login-container .form-control {
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .login-container .btn-primary {
+                background: linear-gradient(135deg, #ff8c00, #ff3d00);
+                border: none;
+                padding: 10px 20px;
+                border-radius: 25px;
+                font-size: 16px;
+                font-weight: bold;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .login-container .btn-primary:hover {
+                    opacity: 0.8;
+                    transform: scale(1.05);
+                }
+
+            .login-container .alert {
+                margin-top: 15px;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="text-center">Login</h2>
+        <form method="post" asp-controller="Login" asp-action="Index">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.ErrorMessage</div>
+        }
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

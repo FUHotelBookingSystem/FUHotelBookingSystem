@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.Repositories;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.UOW;
@@ -53,7 +54,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Overview}/{action=Index}/{id?}");
+                pattern: "{controller=Login}/{action=Index}/{id?}");
 
             app.Run();
         }

@@ -61,6 +61,11 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
             return _unitOfWork.Booking.GetQueryable();
         }
 
+        public IQueryable<User> GetUserQueryable()
+        {
+            return _unitOfWork.User.GetQueryable();
+        }
+
         public bool UpdateBooking(Booking booking)
         {
             try

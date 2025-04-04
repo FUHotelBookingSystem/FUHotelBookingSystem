@@ -68,6 +68,28 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC.Controllers
             return Json(hotelDetails);
         }
 
+        [HttpGet]
+        public IActionResult GetRoomDetails(int roomId)
+        {
+            var room = _roomService.GetQueryable().FirstOrDefault(r => r.Id == roomId);
+            if (room == null)
+            {
+                return NotFound();
+            }
+
+            var roomDetails = new
+            {
+                room.Id,
+                room.HotelId,
+                room.RoomNumber,
+                room.Type,
+                room.Price,
+                room.Status
+            };
+
+            return Json(roomDetails);
+        }
+
         [HttpPost]
         public IActionResult CreateHotel(Hotel hotel)
         {

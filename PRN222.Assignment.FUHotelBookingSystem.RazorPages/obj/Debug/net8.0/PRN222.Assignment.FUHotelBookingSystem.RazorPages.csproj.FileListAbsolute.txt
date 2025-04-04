@@ -298,3 +298,5 @@ E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Ass
 E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.RazorPages\obj\Debug\net8.0\PRN222.Assignment.FUHotelBookingSystem.RazorPages.pdb
 E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.RazorPages\obj\Debug\net8.0\PRN222.Assignment.FUHotelBookingSystem.RazorPages.genruntimeconfig.cache
 E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.RazorPages\obj\Debug\net8.0\ref\PRN222.Assignment.FUHotelBookingSystem.RazorPages.dll
+E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.RazorPages\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+E:\Invidual Project\New folder\PRN222.Assignment.FUHotelBookingSystem\PRN222.Assignment.FUHotelBookingSystem.RazorPages\bin\Debug\net8.0\StackExchange.Redis.dll

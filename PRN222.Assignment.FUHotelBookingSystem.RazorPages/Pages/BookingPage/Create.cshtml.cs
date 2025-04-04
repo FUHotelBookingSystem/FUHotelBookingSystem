@@ -66,11 +66,27 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
 
 
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            
+            if (Booking.CheckinAt == null || Booking.CheckinOut == null)
+            {
+                ModelState.AddModelError("Booking.CheckinAt", "Check-in date is required.");
+                ModelState.AddModelError("Booking.CheckinOut", "Check-out date is required.");
+                var room = _roomService.getAllRoomByHotelId((int)id);
+                var bookedRoomIds = room.Where(m => m.Status.Equals("Occupied"))
+                        .Select(m => m.Id)
+                        .ToList();
+                ViewData["RoomId"] = room.Select(r => new SelectListItem
+                {
+                    Value = r.Id.ToString(),
+                    Text = $"{r.RoomNumber} - Price: ${r.Price} {(bookedRoomIds.Contains(r.Id) ? " - 🚫 Booked" : " - ✅ Available")}",
+                    Disabled = bookedRoomIds.Contains(r.Id)
+                }).ToList();
+                return Page();
+            }
             TempData["Hotel"] = JsonConvert.SerializeObject(hotel);
             TempData["Booking"] = JsonConvert.SerializeObject(Booking);
+            
             return RedirectToPage("./Details");
         }
     }

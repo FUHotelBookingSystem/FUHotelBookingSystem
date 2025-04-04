@@ -47,7 +47,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.VnpayPage
         public Room room;
         public String totalPrice;
         public decimal price;
-        public async Task OnGet()
+        public async Task<IActionResult> OnGet()
         {
             // Lấy các tham số callback từ query string
             var queryCollection = Request.Query;
@@ -100,6 +100,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.VnpayPage
             {
                 VnpTransactionStatus = "Transaction failed or canceled.";
             }
+            return RedirectToPage("/HomePage/Index");
         }
     }
 }

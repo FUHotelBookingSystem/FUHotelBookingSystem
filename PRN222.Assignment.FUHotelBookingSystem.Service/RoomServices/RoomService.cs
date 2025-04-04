@@ -29,5 +29,19 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices
         {
             return _unitOfWork.Room.GetbyId(id);
         }
+
+        public bool SetRoomBlock(int id)
+        {
+            try
+            {
+                var findRoom = _unitOfWork.Room.GetbyId(id);
+                findRoom.Status = "Occupied";
+                _unitOfWork.Room.Update(findRoom);
+                return true;
+            }catch(Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

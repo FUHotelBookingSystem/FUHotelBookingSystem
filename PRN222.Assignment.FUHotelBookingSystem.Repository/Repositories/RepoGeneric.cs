@@ -25,7 +25,12 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Repository.Repositories
             _dbSet.Add(entity);
             _context.SaveChanges();
         }
-
+        public T Add1(T entity)
+        {
+            _dbSet.Add(entity);
+            _context.SaveChanges();
+            return entity;
+        }
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);

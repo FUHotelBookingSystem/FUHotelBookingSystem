@@ -16,15 +16,23 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
             _unitOfWork = unitOfWork;
         }
 
-        public bool createBooking(Booking booking)
+        public int CountBooking()
+        {
+            var result = _unitOfWork.Booking.GetAll().Count();
+            return result;
+        }
+
+        public Booking createBooking(Booking booking)
         {
             try
             {
-                _unitOfWork.Booking.Add(booking);
-                return true;
-            }catch(Exception e)
+                
+
+                return _unitOfWork.Booking.Add1(booking);
+            }
+            catch(Exception e)
             {
-                return false;
+                return null;
             }
         }
 
@@ -46,6 +54,20 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
                 return true;
             }
             catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateStatustBooking(int id)
+        {
+            try
+            {
+                var result = _unitOfWork.Booking.GetbyId(id);
+                result.Status = "Confirmed";
+                _unitOfWork.Booking.Update(result);
+                return true;
+            }catch(Exception e)
             {
                 return false;
             }

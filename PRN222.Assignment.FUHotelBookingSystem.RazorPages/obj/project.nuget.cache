@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HVgWII7XE7M=",
+  "dgSpecHash": "cDpZJe5e3nw=",
   "success": true,
   "projectFilePath": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj",
   "expectedPackageFiles": [
@@ -57,8 +57,8 @@
     "C:\\Users\\minho\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.13\\microsoft.aspnetcore.authentication.jwtbearer.8.0.13.nupkg.sha512",
-    "C:\\Users\\minho\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.3.0\\microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
-    "C:\\Users\\minho\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.3.0\\microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
+    "C:\\Users\\minho\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\minho\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\microsoft.build\\17.8.3\\microsoft.build.17.8.3.nupkg.sha512",

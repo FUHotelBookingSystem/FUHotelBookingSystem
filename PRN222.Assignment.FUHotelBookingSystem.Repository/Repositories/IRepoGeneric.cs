@@ -12,6 +12,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Repository.Repositories
         IEnumerable<T> GetAll();
         T GetbyId(int id);
         void Add(T entity);
+        T Add1(T entity);
         void Update(T entity);
         void Delete(T entity);
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);

@@ -3,52 +3,36 @@
   "WorkspaceRootPath": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\vnpaypage\\callback.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\vnpaypage\\callback.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.service\\userservices\\usercreateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.service\\userservices\\usercreateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\auhthenticatepage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\auhthenticatepage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\homepage\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\homepage\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.service\\userservices\\iusercreateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.service\\userservices\\iusercreateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.service\\redisservice\\rediscacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.service\\redisservice\\rediscacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.service\\redisservice\\irediscacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43C86E0D-2236-4CF3-89E8-25928DB61165}|PRN222.Assignment.FUHotelBookingSystem.Service\\PRN222.Assignment.FUHotelBookingSystem.Service.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.service\\redisservice\\irediscacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\homepage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\homepage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|e:\\invidual project\\new folder\\prn222.assignment.fuhotelbookingsystem\\prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10D7F0E8-D5FB-440E-9EC8-BF45B7B69C76}|PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj|solutionrelative:prn222.assignment.fuhotelbookingsystem.razorpages\\pages\\bookingpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,169 +41,111 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 629,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 798,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\AuhthenticatePage\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\AuhthenticatePage\\Index.cshtml.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\AuhthenticatePage\\Index.cshtml.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\AuhthenticatePage\\Index.cshtml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCUAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:57:24.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-04T08:57:17.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "USerCreateService.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\USerCreateService.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\USerCreateService.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\USerCreateService.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\USerCreateService.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwFAAAAAQAAAAAAAAAA==",
+              "Title": "Details.cshtml.cs",
+              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml.cs",
+              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml.cs",
+              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml.cs",
+              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAIA6wDEAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:34:14.617Z",
+              "WhenOpened": "2025-04-04T10:27:13.067Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IUSerCreateService.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\IUSerCreateService.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\IUSerCreateService.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\IUSerCreateService.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.Service\\UserServices\\IUSerCreateService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml.cs",
+              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml.cs",
+              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml.cs",
+              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml.cs",
+              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAswE0AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:34:13.347Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Program.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Program.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Program.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Program.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAIwHoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:28:25.412Z",
+              "WhenOpened": "2025-04-04T09:59:56.642Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\appsettings.json",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\appsettings.json",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-04T08:26:28.911Z",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml",
+              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml",
+              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml",
+              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Details.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAEsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T10:22:47.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RedisCacheService.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\RedisCacheService.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\RedisCacheService.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\RedisCacheService.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\RedisCacheService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:30:47.894Z",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Details.cshtml",
+              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Details.cshtml",
+              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Details.cshtml",
+              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Details.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T10:18:05.087Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
+              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
+              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
+              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Create.cshtml",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAFAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T10:17:46.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\Shared\\_Layout.cshtml",
               "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAUwK8AAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-04T08:25:06.759Z",
+              "WhenOpened": "2025-04-04T09:54:15.093Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IRedisCacheService.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\IRedisCacheService.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\IRedisCacheService.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\IRedisCacheService.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.Service\\RedisService\\IRedisCacheService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAALAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml.cs",
+              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml.cs",
+              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAswDQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:51:57.229Z",
+              "WhenOpened": "2025-04-04T09:51:19.263Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Index.cshtml",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Index.cshtml",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\HomePage\\Index.cshtml",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-04T08:24:31.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml",
               "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml",
               "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml",
               "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\BookingPage\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAmwBoAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-04T08:24:26.734Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 629,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CallBack.cshtml.cs",
-              "DocumentMoniker": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\VnpayPage\\CallBack.cshtml.cs",
-              "RelativeDocumentMoniker": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\VnpayPage\\CallBack.cshtml.cs",
-              "ToolTip": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\VnpayPage\\CallBack.cshtml.cs",
-              "RelativeToolTip": "PRN222.Assignment.FUHotelBookingSystem.RazorPages\\Pages\\VnpayPage\\CallBack.cshtml.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAmwE8AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T08:24:02.431Z",
+              "WhenOpened": "2025-04-04T09:51:17.761Z",
               "EditorCaption": ""
             }
           ]

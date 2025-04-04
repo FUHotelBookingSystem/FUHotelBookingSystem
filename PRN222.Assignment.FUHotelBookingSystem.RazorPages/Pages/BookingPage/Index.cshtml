@@ -2,71 +2,150 @@
 @model PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Booking History";
 }
 
-<h1>Index</h1>
+<div class="container mt-5">
+    <!-- Title Section -->
+    <div class="text-center mb-4">
+        <h1 class="text-primary">Booking History</h1>
+        <p class="text-muted">View your past bookings and their details</p>
+    </div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].CheckinAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].CheckinOut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Room)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Booking) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CheckinAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CheckinOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.RoomNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <!-- Table Section -->
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.user.FullName)</th>
+                <th>@Html.DisplayNameFor(model => model.user.Phone)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].BookingDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].CheckinAt)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].CheckinOut)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].Status)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].CreatedAt)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].Room.Hotel.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Booking[0].Room.RoomNumber)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Booking)
+            {
+                <tr>
+
+
+                    <td>@Html.DisplayFor(model => model.user.FullName)</td>
+                    <td>@Html.DisplayFor(model => model.user.Phone)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BookingDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CheckinAt)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CheckinOut)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Room.Hotel.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Room.RoomNumber)</td>
+
+                </tr>
+            }
+            
+            
+        </tbody>
+    </table>
+
+
+    <!-- Pagination Section -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <div>
+            @if (Model.PageNumber > 1)
+            {
+                <a class="btn btn-outline-primary btn-sm" asp-page="./Index" asp-route-PageNumber="@(Model.PageNumber - 1)">Previous</a>
+            }
+        </div>
+        <div class="text-center">
+            <span>Page @Model.PageNumber of @Model.TotalPages</span>
+        </div>
+        <div>
+            @if (Model.PageNumber < Model.TotalPages)
+            {
+                <a class="btn btn-outline-primary btn-sm" asp-page="./Index" asp-route-PageNumber="@(Model.PageNumber + 1)">Next</a>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Add some custom styling -->
+<style>
+    body {
+        background-color: #f4f6f9;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .text-muted {
+        color: #6c757d;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border-radius: 4px;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .btn-outline-primary {
+        border-color: #007bff;
+        color: #007bff;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+</style>

@@ -48,9 +48,9 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
             user = _user.getAccountById(Booking.UserId);
             var listRoom = _roomService.getAllRoomByHotelId(Hotel.Id);
             room = listRoom.Where(m => m.Id == Booking.RoomId).FirstOrDefault();
-
             DateTime checkinDate = (DateTime)Booking.CheckinAt; 
-            DateTime checkoutDate = (DateTime)Booking.CheckinOut; 
+            DateTime checkoutDate = (DateTime)Booking.CheckinOut;
+            
 
             int daysDifference = (checkoutDate - checkinDate).Days;
 

@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #212529;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h4 {
+                text-align: center;
+                margin-bottom: 20px;
+                font-weight: bold;
+                border-bottom: 2px solid #495057;
+                padding-bottom: 10px;
+            }
+
+            .sidebar a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 12px;
+                border-radius: 5px;
+                font-size: 16px;
+                transition: background 0.3s, transform 0.2s;
+            }
+
+                .sidebar a:hover {
+                    background: #495057;
+                    transform: scale(1.05);
+                }
+
+        .content {
+            flex-grow: 1;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h4>FU Hotel Dashboard</h4>
+        <a href="/Overview">📊 Tổng quan</a>
+        <a href="/HotelManagement">🏨 Quản lý khách sạn</a>
+        <a href="/BookingManagement">📅 Quản lý đặt phòng</a>
+        <a href="/UserManagement">👥 Quản lý người dùng</a>
+        <a href="/Message">💬 Chăm sóc khách hàng</a>
+    </div>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

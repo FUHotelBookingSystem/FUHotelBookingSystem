@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN222.Assignment.FUHotelBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN222.Assignment.FUHotelBookingSystem.Repository", "PRN222.Assignment.FUHotelBookingSystem.Repository\PRN222.Assignment.FUHotelBookingSystem.Repository.csproj", "{F1ECF26F-61B0-4524-AC2F-962F01829912}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN222.Assignment.FUHotelBookingSystem.MVC", "PRN222.Assignment.FUHotelBookingSystem.MVC\PRN222.Assignment.FUHotelBookingSystem.MVC.csproj", "{66860339-4222-4614-BAB2-AC9B5F600EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1ECF26F-61B0-4524-AC2F-962F01829912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66860339-4222-4614-BAB2-AC9B5F600EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66860339-4222-4614-BAB2-AC9B5F600EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66860339-4222-4614-BAB2-AC9B5F600EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66860339-4222-4614-BAB2-AC9B5F600EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

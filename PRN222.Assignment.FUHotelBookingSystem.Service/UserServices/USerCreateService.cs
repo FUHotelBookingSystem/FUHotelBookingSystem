@@ -8,6 +8,7 @@ using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.UOW;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.helper;
+using PRN222.Assignment.FUHotelBookingSystem.Service.RedisService;
 
 namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
 {
@@ -15,10 +16,12 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICookieService _cookie;
-        public USerCreateService(IUnitOfWork unitOfWork, ICookieService cookie)
+        private readonly IRedisCacheService _redisCacheService;
+        public USerCreateService(IUnitOfWork unitOfWork, ICookieService cookie, IRedisCacheService redisCacheService)
         {
             _unitOfWork = unitOfWork;
             _cookie = cookie;
+            _redisCacheService = redisCacheService;
         }
         public bool createAccount(User account)
         {
@@ -77,6 +80,8 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.UserServices
                 Debug.WriteLine(token);
                 _cookie.SetCookie(token, result, 1);
                 _cookie.SetCookie("ReLogin", token, 1);
+                _redisCacheService.SetAsync("Relogin", token, TimeSpan.FromMinutes(60));
+                _redisCacheService.SetAsync("CookieRelogin", result, TimeSpan.FromMinutes(60));
                 return token;
             }
 

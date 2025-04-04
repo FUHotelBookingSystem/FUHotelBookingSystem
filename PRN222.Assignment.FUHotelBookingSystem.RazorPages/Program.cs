@@ -1,5 +1,4 @@
 ﻿using CodeMegaVNPay.Services;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +10,11 @@ using PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.MessageServices;
+using PRN222.Assignment.FUHotelBookingSystem.Service.RedisService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.UserServices;
+using StackExchange.Redis;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,8 +34,9 @@ builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<IUSerCreateService, USerCreateService>();
+builder.Services.AddScoped<IRedisCacheService, RedisCacheService>();
 
-// Cấu hình CookieAuthentication
+// Cấu hình Cookie Authentication cho ứng dụng Razor
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -42,7 +45,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromDays(7); // Thời gian hết hạn cookie
         options.SlidingExpiration = true; // Gia hạn cookie khi có yêu cầu mới
         options.Cookie.HttpOnly = true; // Chỉ có thể truy cập cookie qua HTTP (giúp bảo mật)
-        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // Tùy chọn bảo mật cho cookie
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Tùy chọn bảo mật cho cookie
         options.Cookie.Name = "ReLogin"; // Tên cookie
         options.Cookie.SameSite = SameSiteMode.Lax; // Giúp cookie được duy trì trong các request cross-site (tốt cho callback)
     });
@@ -58,33 +61,42 @@ builder.Services.AddSession(options =>
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 
-// Cấu hình JWT nếu cần
+// Cấu hình JWT Authentication cho API
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            RequireExpirationTime = true,
-            ValidateLifetime = true
-        };
-    });
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        RequireExpirationTime = true,
+        ValidateLifetime = true
+    };
+});
 
 builder.Services.AddAuthorization();
 builder.Services.AddSignalR();
+var redisConfig = builder.Configuration.GetSection("RedisString");
+var redisConnectionString = $"{redisConfig["Redis"]}:{redisConfig["Port"]},password={redisConfig["Password"]},ssl=False";
+
+// Đăng ký Redis Connection Multiplexer vào DI container
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
 // Cấu hình Razor Pages
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Sử dụng Session và CookieAuthentication
+// Sử dụng Session và CookieAuthentication cho Razor Pages
 app.UseSession();
-app.UseAuthentication();
+app.UseAuthentication();  // Đảm bảo authentication luôn chạy trước authorization
 app.UseAuthorization();
 
 // Cấu hình các middleware khác
@@ -100,7 +112,7 @@ app.UseStaticFiles();
 // Cấu hình routing
 app.UseRouting();
 
-// Chuyển hướng trang chủ
+// Chuyển hướng trang chủ nếu đường dẫn là "/"
 app.Use(async (context, next) =>
 {
     if (context.Request.Path == "/")
@@ -111,5 +123,5 @@ app.Use(async (context, next) =>
     await next();
 });
 
-app.MapRazorPages();
+app.MapRazorPages(); // Sử dụng Razor Pages
 app.Run();

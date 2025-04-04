@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cDpZJe5e3nw=",
+  "dgSpecHash": "VRdlXxi3cCg=",
   "success": true,
   "projectFilePath": "E:\\Invidual Project\\New folder\\PRN222.Assignment.FUHotelBookingSystem\\PRN222.Assignment.FUHotelBookingSystem.RazorPages\\PRN222.Assignment.FUHotelBookingSystem.RazorPages.csproj",
   "expectedPackageFiles": [
@@ -132,6 +132,8 @@
     "C:\\Users\\minho\\.nuget\\packages\\nuget.projectmodel\\6.11.0\\nuget.projectmodel.6.11.0.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\nuget.protocol\\6.11.0\\nuget.protocol.6.11.0.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\nuget.versioning\\6.11.0\\nuget.versioning.6.11.0.nupkg.sha512",
+    "C:\\Users\\minho\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\minho\\.nuget\\packages\\stackexchange.redis\\2.8.31\\stackexchange.redis.2.8.31.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
     "C:\\Users\\minho\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",

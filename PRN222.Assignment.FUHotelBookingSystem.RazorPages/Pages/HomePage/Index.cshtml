@@ -92,6 +92,7 @@
     </nav>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.11/signalr.min.js"></script>
 <script>
     document.getElementById("searchBox").addEventListener("input", function () {
         let filter = this.value.toLowerCase();
@@ -107,10 +108,8 @@
         let newUrl = window.location.pathname + "?searchTerm=" + encodeURIComponent(filter) + "&pageNumber=1";
         history.pushState(null, "", newUrl);
     });
-</script>
 
-<script>
-        function checkLoginStatus(hotelId) {
+    function checkLoginStatus(hotelId) {
         // Check if the token exists in the session (using a simple check for token in session)
         var token = '@HttpContextAccessor.HttpContext.Session.GetString("Token")';
 
@@ -124,4 +123,16 @@
         }
     }
 
+    // Set up SignalR connection
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("https://localhost:7060/fuhub")
+        .build();
+
+    connection.on("ReceiveUpdate", function () {
+        location.reload();
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
 </script>

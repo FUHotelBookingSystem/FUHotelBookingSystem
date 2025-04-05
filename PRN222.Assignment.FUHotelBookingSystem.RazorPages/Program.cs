@@ -10,6 +10,7 @@ using PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.MessageServices;
+using PRN222.Assignment.FUHotelBookingSystem.Service.PaymentService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RedisService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.UserServices;
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IVnPayService, VnPayService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<IUSerCreateService, USerCreateService>();
 builder.Services.AddScoped<IRedisCacheService, RedisCacheService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 // Cấu hình Cookie Authentication cho ứng dụng Razor
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

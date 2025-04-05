@@ -18,5 +18,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
         public bool UpdateStatustBooking(int id);
         public IQueryable<Booking> GetQueryable();
         public IQueryable<User> GetUserQueryable();
+
+        List<Booking> checkRoomActivate(DateTime? checkinAt, DateTime? checkinOut, int roomId);
     }
 }

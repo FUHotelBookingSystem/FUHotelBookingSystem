@@ -10,6 +10,7 @@ using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
 using PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
+using PRN222.Assignment.FUHotelBookingSystem.Service.PaymentService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RedisService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.UserServices;
@@ -26,9 +27,10 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.VnpayPage
         private readonly IHotelService _hotelService;
         private readonly IRedisCacheService _redisCacheService;
         private readonly ICookieService _cookie;
+        private readonly IPaymentService _paymentService;
 
         public CallBackModel(IVnPayService vnpayService,IBookingService bookingService, IUSerCreateService user,
-            IRoomService roomService, IHotelService hotelService,IRedisCacheService redisCacheService, ICookieService cookie)
+            IRoomService roomService, IHotelService hotelService,IRedisCacheService redisCacheService, ICookieService cookie, IPaymentService paymentService)
         {
             _vnpayService = vnpayService;
             _bookingService = bookingService;
@@ -37,6 +39,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.VnpayPage
             _roomService = roomService;
             _redisCacheService = redisCacheService;
             _cookie = cookie;
+            _paymentService = paymentService;
         }
 
         [BindProperty]
@@ -92,6 +95,15 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.VnpayPage
 
                 _bookingService.UpdateStatustBooking(booking.Id);
                 _roomService.SetRoomBlock(room.Id);
+
+
+                Payment payment = new Payment();
+                payment.Status = "completed";
+                payment.PaymentMethod = "credit_card";
+                payment.Amount = Decimal.Parse(totalPrice);
+                payment.BookingId = booking.Id;
+                _paymentService.createPayment(payment);
+
                 VnpTransactionStatus = "Transaction successful.";
                 // Cập nhật kết quả giao dịch vào cơ sở dữ liệu nếu cần
                 // Ví dụ: Cập nhật trạng thái booking hoặc gửi email cho khách hàng

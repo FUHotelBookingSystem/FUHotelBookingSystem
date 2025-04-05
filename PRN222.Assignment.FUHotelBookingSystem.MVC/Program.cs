@@ -5,6 +5,7 @@ using PRN222.Assignment.FUHotelBookingSystem.Repository.Repositories;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.UOW;
 using PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
+using PRN222.Assignment.FUHotelBookingSystem.Service.helper;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.MessageServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RedisService;
@@ -35,6 +36,8 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,6 +58,8 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Login}/{action=Index}/{id?}");
+
+            app.MapHub<FUHub>("/fuhub");
 
             app.Run();
         }

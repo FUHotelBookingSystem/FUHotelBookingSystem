@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices;
+using PRN222.Assignment.FUHotelBookingSystem.Service.helper;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PRN222.Assignment.FUHotelBookingSystem.MVC.Controllers
 {
@@ -11,11 +14,13 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC.Controllers
     {
         private readonly IHotelService _hotelService;
         private readonly IRoomService _roomService;
+        private readonly IHubContext<FUHub> _hubContext;
 
-        public HotelManagementController(IHotelService hotelService, IRoomService roomService)
+        public HotelManagementController(IHotelService hotelService, IRoomService roomService, IHubContext<FUHub> hubContext)
         {
             _hotelService = hotelService;
             _roomService = roomService;
+            _hubContext = hubContext;
         }
 
         public IActionResult Index(string search = "", int page = 1)
@@ -91,46 +96,50 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateHotel(Hotel hotel)
+        public async Task<IActionResult> CreateHotel(Hotel hotel)
         {
             _hotelService.createHotel(hotel);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate");
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult UpdateHotel(Hotel hotel)
+        public async Task<IActionResult> UpdateHotel(Hotel hotel)
         {
             _hotelService.updateHotel(hotel);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate");
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult DeleteHotel(int hotelId)
+        public async Task<IActionResult> DeleteHotel(int hotelId)
         {
             _hotelService.deleteHotel(hotelId);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate");
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult CreateRoom(Room room)
+        public async Task<IActionResult> CreateRoom(Room room)
         {
-            Console.WriteLine(room);
             _roomService.createRoom(room);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate");
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult UpdateRoom(Room room)
+        public async Task<IActionResult> UpdateRoom(Room room)
         {
-            Console.WriteLine(room);
             _roomService.updateRoom(room);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate");
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult DeleteRoom(int roomId)
+        public async Task<IActionResult> DeleteRoom(int roomId)
         {
             _roomService.deleteRoom(roomId);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate");
             return RedirectToAction("Index");
         }
     }

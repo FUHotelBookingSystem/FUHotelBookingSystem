@@ -17,6 +17,18 @@ namespace PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices
             _unitOfWork = unitOfWork;
         }
 
+        public List<Booking> checkRoomActivate(DateTime? checkIn, DateTime? checkOut, int roomId)
+        {
+            var result = _unitOfWork.Booking.GetAll()
+                .Where(booking => booking.RoomId == roomId &&
+                                  ((checkIn >= booking.CheckinAt && checkIn < booking.CheckinOut) ||
+                                   (checkOut > booking.CheckinAt && checkOut <= booking.CheckinOut) ||
+                                   (checkIn <= booking.CheckinAt && checkOut >= booking.CheckinOut)))
+                .ToList();
+
+            return result;
+        }
+
         public int CountBooking()
         {
             var result = _unitOfWork.Booking.GetAll().Count();

@@ -20,7 +20,7 @@ namespace PRN222.Assignment.FUHotelBookingSystem.MVC.Controllers
 
         public IActionResult Index(string search = "", int hotelId = 0, DateTime? filterDate = null, int page = 1)
         {
-            int pageSize = 10;
+            int pageSize = 5;
             var bookings = _bookingService.GetAllBookings();
 
             if (!string.IsNullOrEmpty(search))

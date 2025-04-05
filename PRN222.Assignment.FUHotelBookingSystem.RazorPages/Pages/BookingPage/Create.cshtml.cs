@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PRN222.Assignment.FUHotelBookingSystem.Repository.Model;
+using PRN222.Assignment.FUHotelBookingSystem.Service.BookingServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.CookieService;
 using PRN222.Assignment.FUHotelBookingSystem.Service.HotelServices;
 using PRN222.Assignment.FUHotelBookingSystem.Service.RoomServices;
@@ -21,13 +22,15 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
         private readonly IHotelService _hotelService;
         private readonly ICookieService _cookieService;
         private readonly IUSerCreateService _user;
+        private readonly IBookingService _bookignService;
 
-        public CreateModel(IRoomService roomService,IHotelService hotelService,ICookieService cookieService,IUSerCreateService uSerCreateService)
+        public CreateModel(IRoomService roomService,IHotelService hotelService,ICookieService cookieService,IUSerCreateService uSerCreateService,IBookingService bookingService)
         {
             _hotelService = hotelService;
             _roomService = roomService;
             _cookieService = cookieService;
             _user = uSerCreateService;
+            _bookignService = bookingService;
         }
 
         [BindProperty]
@@ -48,15 +51,13 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
             Booking.UserId = user.Id;
             Booking.BookingDate = DateOnly.FromDateTime(DateTime.Now);
 
-            var bookedRoomIds = room.Where(m => m.Status.Equals("Occupied"))
-                        .Select(m => m.Id) 
-                        .ToList();
+
 
             ViewData["RoomId"] = room.Select(r => new SelectListItem
             {
                 Value = r.Id.ToString(),
-                Text = $"{r.RoomNumber} - Price: ${r.Price} {(bookedRoomIds.Contains(r.Id) ? " - 🚫 Booked" : " - ✅ Available")}",
-                Disabled = bookedRoomIds.Contains(r.Id)
+                Text = $"{r.RoomNumber} - Price: ${r.Price}",
+            
             }).ToList();
 
             return Page();
@@ -73,17 +74,29 @@ namespace PRN222.Assignment.FUHotelBookingSystem.RazorPages.Pages.BookingPage
                 ModelState.AddModelError("Booking.CheckinAt", "Check-in date is required.");
                 ModelState.AddModelError("Booking.CheckinOut", "Check-out date is required.");
                 var room = _roomService.getAllRoomByHotelId((int)id);
-                var bookedRoomIds = room.Where(m => m.Status.Equals("Occupied"))
-                        .Select(m => m.Id)
-                        .ToList();
                 ViewData["RoomId"] = room.Select(r => new SelectListItem
                 {
                     Value = r.Id.ToString(),
-                    Text = $"{r.RoomNumber} - Price: ${r.Price} {(bookedRoomIds.Contains(r.Id) ? " - 🚫 Booked" : " - ✅ Available")}",
-                    Disabled = bookedRoomIds.Contains(r.Id)
+                    Text = $"{r.RoomNumber} - Price: ${r.Price}",
+
                 }).ToList();
                 return Page();
             }
+            if (_bookignService.checkRoomActivate(Booking.CheckinAt, Booking.CheckinOut, Booking.RoomId).Any())
+            {
+                var room = _roomService.getAllRoomByHotelId((int)id);
+                ViewData["RoomId"] = room.Select(r => new SelectListItem
+                {
+                    Value = r.Id.ToString(),
+                    Text = $"{r.RoomNumber} - Price: ${r.Price}",
+
+                }).ToList();
+                ModelState.AddModelError("Booking.CheckinAt", "Phòng đã được đặt trong thời gian này.");
+                ModelState.AddModelError("Booking.CheckinOut", "Vui lòng chọn ngày khác.");
+                return Page();
+            }
+
+
             TempData["Hotel"] = JsonConvert.SerializeObject(hotel);
             TempData["Booking"] = JsonConvert.SerializeObject(Booking);
             
